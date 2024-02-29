@@ -4,9 +4,7 @@
 
     <div class="posts" >
         {% for post in posts %}
-            {% for worker in workers %}
-                <a href="?post={{ post.name }}">{{ post.name }}</a>
-            {% endfor %}
+            <a href="?post={{ post.name }}">{{ post.name }}</a>
         {% endfor %}
     </div>
 
