@@ -1,0 +1,24 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="Имя сотруданика">
+    <select name="post">
+        {% for post in posts %}
+            <option value="{{ post.id }}">{{ post.name }}</option>
+        {% endfor %}
+    </select>
+    <input type="date" name="bd" placeholder="Дата рождения">
+    <input type="number" name="salary" placeholder="Зарплата">
+    <select name="status">
+        {% for status in statuses %}
+            <option value="{{ status.0 }}">{{ status.1 }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Создать</button>
+</form>
+
+{% endblock %}

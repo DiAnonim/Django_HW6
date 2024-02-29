@@ -1,0 +1,24 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="post" enctype="multipart/form-data" style="display: flex; flex-direction: column; align-items: center; gap: 10px">
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="Имя сотруданика" value="{{ worker.name }}">
+    <select name="category" >
+        {% for post in posts %}
+            <option value="{{ post.id }}" {% if post.id == worker.post.id %} selected {% endif %}>{{ post.name }}</option>
+        {% endfor %}
+    </select>
+    <input type="date" name="bd" value="{{ worker.bd }}">
+    <input type="number" name="salary" value="{{ worker.salary }}">
+    <select name="status">
+        {% for status in statuses %}
+            <option value="{{ status.0 }}" {% if status.0 == worker.status %} selected {% endif %}>{{ status.1 }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Обновить</button>
+</form>
+
+{% endblock %}
